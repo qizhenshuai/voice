@@ -2,6 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <a-button type="primary" @click="handleTest">测试</a-button>
   </div>
 </template>
 
@@ -18,6 +19,10 @@ import { fetchHome } from '@/api/index'
 export default class Home extends Vue {
   mounted() {
     fetchHome()
+  }
+
+  handleTest() {
+    console.log('test-click--->')
   }
 }
 </script>
