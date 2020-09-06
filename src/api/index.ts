@@ -1,6 +1,6 @@
 import { request } from '@/utils/request'
 
-export function fetchHome() {
+export function queryHome() {
   return request({
     url: '/api/home'
   })

@@ -1,11 +1,13 @@
+
 <template>
-	<router-view></router-view>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts">
 import { Vue } from 'vue-class-component'
-
-export default class BaseLayout extends Vue {
+export default class BlankLayout extends Vue {
 
 }
 </script>

@@ -1,19 +1,45 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { BaseLayout, BlankLayout } from '@/layouts'
+
 import Home from '../pages/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: BaseLayout,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: Home
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../pages/About.vue')
+    path: '/',
+    component: BlankLayout,
+    children: [
+      {
+        path: '401',
+        name: 'NotPermission',
+        component: () => import(/* webpackChunkName: "401" */ '../pages/error/401.vue')
+      },
+      {
+        path: '404',
+        name: 'NotFound',
+        component: () => import(/* webpackChunkName: "404" */ '../pages/error/404.vue')
+      },
+      {
+        path: '500',
+        name: 'ServerError',
+        component: () => import(/* webpackChunkName: "500" */ '../pages/error/500.vue')
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../pages/login/index.vue')
   }
 ]
 
