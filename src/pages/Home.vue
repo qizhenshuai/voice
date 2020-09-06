@@ -7,20 +7,22 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { queryHome } from '@/api/index'
 import { useStore } from 'vuex'
 
-@Options({
-  components: {}
-})
-export default class Home extends Vue {
-  mounted() {
-    queryHome()
-  }
-
-  handleTest() {
-    useStore().commit('app/UPDATE_NAME', '测试')
+export default {
+  name: 'home',
+  setup() {
+    const store = useStore()
+    const handleTest = () => {
+      if (store.state.app.name === 'app') {
+        store.commit('app/UPDATE_NAME', '测试')
+      } else {
+        store.commit('app/UPDATE_NAME', 'app')
+      }
+    }
+    return {
+      handleTest
+    }
   }
 }
 </script>

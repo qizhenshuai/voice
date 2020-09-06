@@ -29,19 +29,26 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
-import { loginType } from '@/types/login'
+import { reactive } from 'vue'
 
-export default class Login extends Vue {
-  form: loginType = {
-    username: '',
-    password: ''
-  }
-
-  labelCol = {}
-  wrapperCol = {}
-  onSubmit = () => {
-    console.log('on submit...', this.form)
+export default {
+  name: 'Login',
+  setup() {
+    const state = reactive({
+      form: {
+        username: '',
+        password: ''
+      },
+      labelCol: {},
+      wrapperCol: {}
+    })
+    const onSubmit = () => {
+      console.log('on submit...', state.form)
+    }
+    return {
+      ...state,
+      onSubmit
+    }
   }
 }
 </script>
