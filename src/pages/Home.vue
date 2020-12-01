@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <div>{{ $store.state.app.name }}</div>
-    <a-button type="primary" @click="handleTest">测试</a-button>
+    <el-button type="primary" @click="handleTest">测试</el-button>
   </div>
 </template>
 
