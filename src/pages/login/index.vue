@@ -2,28 +2,15 @@
   <div class="login-page">
     <div class="login-wrap">
       <div class="login-title">后台管理</div>
-      <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
-        <a-form-item>
-          <a-input
-            v-model:value="form.username"
-            class="login-input"
-            placeholder="用户名"
-          />
-        </a-form-item>
-        <a-form-item>
-          <a-input-password
-            v-model:value="form.password"
-            class="login-input"
-            type="password"
-            placeholder="密码"
-          />
-        </a-form-item>
-        <a-form-item :wrapper-col="wrapperCol">
-          <a-button type="primary" @click="onSubmit" class="login-btn">
-            登录
-          </a-button>
-        </a-form-item>
-      </a-form>
+      <el-form :model="form">
+        <el-form-item label="账户">
+          <el-input v-model="form.username" aria-placeholder="账户信息" />
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="form.password" aria-placeholder="密码" />
+        </el-form-item>
+        <el-button type="primary" @click="handleSubmitLogin">登录</el-button>
+      </el-form>
     </div>
   </div>
 </template>
@@ -42,12 +29,12 @@ export default {
       labelCol: {},
       wrapperCol: {}
     })
-    const onSubmit = () => {
+    const handleSubmitLogin = () => {
       console.log('on submit...', state.form)
     }
     return {
       ...state,
-      onSubmit
+      handleSubmitLogin
     }
   }
 }
